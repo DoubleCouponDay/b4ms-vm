@@ -16,6 +16,10 @@
             "type": "string",
             "defaultValue": "GatewaySubnet"
         },
+        "customSubnetName": {
+            "type": "string",
+            "defaultValue": "customSubnet1"
+        },
         "vpnGatewayName": {
             "type": "string",
             "defaultValue": "myVpnGateway"
@@ -71,7 +75,13 @@
                 },
                 "subnets": [
                     {
-                        "name": "GatewaySubnet",
+                        "name": "[parameters('vnetName')]",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24"
+                        }
+                    },
+                    {
+                        "name": "[parameters('customSubnetName')]",
                         "properties": {
                             "addressPrefix": "10.0.0.0/24"
                         }
@@ -94,13 +104,12 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIpName'))]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('vnetName'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('customSubnetName'))]"
                             }
                         }
                     }
                 ],
                 "gatewayType": "Vpn",
-                "vpnType": "PolicyBased",
                 "enableBgp": false,
                 "activeActive": false,
                 "sku": {
