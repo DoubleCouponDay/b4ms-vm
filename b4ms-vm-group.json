@@ -7,7 +7,7 @@
             "defaultValue": "myVM"
         },
         "adminUsername": {
-            "type": "string"
+            "type": "securestring"
         },
         "adminPassword": {
             "type": "securestring"
