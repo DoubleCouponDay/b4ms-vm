@@ -39,6 +39,13 @@
     },
     "resources": [
         {
+            "type": "Microsoft.Network/virtualnetworks/subnets",
+            "apiVersion": "2017-08-01",
+            "name": "[parameters('subnetName')]",
+            "properties": {
+            }
+        },
+        {
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2017-08-01",
             "name": "[parameters('publicIpName')]",
@@ -81,7 +88,10 @@
                         }
                     }
                 ]
-            }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualnetworks/subnets', parameters('subnetName'))]"
+            ]
         },
         {
             "type": "Microsoft.Network/virtualNetworkGateways",
