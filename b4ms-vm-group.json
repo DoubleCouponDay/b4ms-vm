@@ -14,10 +14,6 @@
         },
         "vnetName": {
             "type": "string",
-            "defaultValue": "myVNet"
-        },
-        "subnetName": {
-            "type": "string",
             "defaultValue": "GatewaySubnet"
         },
         "vpnGatewayName": {
@@ -38,13 +34,6 @@
         }
     },
     "resources": [
-        {
-            "type": "Microsoft.Network/virtualnetworks/subnets",
-            "apiVersion": "2017-08-01",
-            "name": "[parameters('subnetName')]",
-            "properties": {
-            }
-        },
         {
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2017-08-01",
@@ -82,16 +71,13 @@
                 },
                 "subnets": [
                     {
-                        "name": "[parameters('subnetName')]",
+                        "name": "GatewaySubnet",
                         "properties": {
                             "addressPrefix": "10.0.0.0/24"
                         }
                     }
                 ]
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualnetworks/subnets', parameters('subnetName'))]"
-            ]
+            }
         },
         {
             "type": "Microsoft.Network/virtualNetworkGateways",
@@ -108,7 +94,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIpName'))]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('subnetName'), parameters('subnetName'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('vnetName'))]"
                             }
                         }
                     }
