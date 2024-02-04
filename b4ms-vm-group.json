@@ -98,7 +98,7 @@
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIpName'))]"
                             },
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('subnetName'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('subnetName'), parameters('subnetName'))]"
                             }
                         }
                     }
@@ -129,7 +129,7 @@
                         "name": "ipconfig1",
                         "properties": {
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('vnetName'))]"
                             },
                             "privateIPAllocationMethod": "Dynamic"
                         }
