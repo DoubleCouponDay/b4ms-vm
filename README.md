@@ -8,6 +8,6 @@ Azure One Click Deploy of a B4ms Virtual Machine, with Virtual Private Network.
 
 ## Deployment
 
-`./deploy.bat`
+`.\deploy.bat`
 
-If the deployment doesn't work, run `delete.bat` to clean up the resource group.
+If the deployment doesn't work, run `.\delete.bat` to clean up the resource group.
