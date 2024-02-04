@@ -1,0 +1,1 @@
+az group delete --name b4ms-vm-test --yes --no-wait
